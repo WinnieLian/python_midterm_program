@@ -36,16 +36,24 @@ def fetch_movie_details(movie_id):
     # Save the movie details to a JSON file
     raw_data.append(attributes)
 
-# Function to fetch movie details within a date range
-def fetch_movies_in_date_range(year):
+from datetime import datetime
+
+def fetch_movies_in_date_range():
     discover = tmdb.Discover()  # Instantiate Discover
     page = 1
 
+    # 定义日期范围：2023年1月1日至2023年12月31日
+    release_date_gte = "2023-01-01"
+    release_date_lte = "2023-12-31"
+    date_format = "%Y-%m-%d"  # 日期格式
+
     while True:
-        # Discover movies based on release dates using keyword arguments
+        # 使用 release_date.gte 和 release_date.lte 参数过滤电影发布日期
         response = discover.movie(
-            year=year,
-            page=page
+            release_date_gte=release_date_gte,
+            release_date_lte=release_date_lte,
+            page=page,
+         
         )
 
         if 'results' not in response:
@@ -53,22 +61,37 @@ def fetch_movies_in_date_range(year):
             break
 
         movies = response['results']
-        print(page)
+        print(f"Processing page {page}")
 
         for movie in movies:
             movie_id = movie.get('id')
-            movie_total.append(movie_id)
-            fetch_movie_details(movie_id)
-        
+            release_date = movie.get('release_date')
 
-        #if page >= response['total_pages']:
-        if page>=500:
+            # 如果 release_date 为空，跳过这部电影
+            if not release_date:
+                continue
+
+            # 将 release_date 转换为 datetime 对象
+            movie_release_date = datetime.strptime(release_date, date_format)
+
+            # 定义 2023 年的开始和结束日期
+            start_date = datetime.strptime(release_date_gte, date_format)
+            end_date = datetime.strptime(release_date_lte, date_format)
+
+            # 检查 release_date 是否在 2023 年范围内
+            if start_date <= movie_release_date <= end_date:
+                movie_total.append(movie_id)
+                fetch_movie_details(movie_id)
+            else:
+                print(f"Skipping Movie ID: {movie_id}, Release Date: {release_date}")
+
+        # 限制为500页结果
+        if page >= 500:
             break
-        page += 1  # Go to the next page
-       
+        page += 1  # Go to the next pageç
 
 # Example usage
-fetch_movies_in_date_range(2024)
+fetch_movies_in_date_range()
 filename = "output.csv"
 
 # 写入 CSV 文件
