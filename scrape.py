@@ -43,8 +43,8 @@ def fetch_movies_in_date_range():
     page = 1
 
     # 定义日期范围：2023年1月1日至2023年12月31日
-    release_date_gte = "2020-01-01"
-    release_date_lte = "2020-12-31"
+    release_date_gte = "2024-01-01"
+    release_date_lte = "2024-10-7"
     date_format = "%Y-%m-%d"  # 日期格式
 
     while True:
