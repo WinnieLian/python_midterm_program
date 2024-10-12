@@ -8,3 +8,4 @@ Data collection methods must be understood and clearly documented. You should re
 
 We used a personal API key to extract information about movie title, revenue, budget, vote_average, vote_count, genres, production
 
+![WhatsApp Image 2024-10-12 at 13.31.31_2a3f1367](C:\Users\Admin\Desktop\WhatsApp Image 2024-10-12 at 13.31.31_2a3f1367.jpg)
