@@ -40,3 +40,18 @@ for year in years:
             print(f"Error")
     else:
         print(f"Error")
+
+        # create three data sets
+def create_datasets(df):
+    all_cleaned_movies = df
+    non_zero_revenue_cleaned_movies = df[df['revenue'] > 0]
+    non_zero_revenue_or_budget_cleaned_movies = df[(df['revenue'] > 0) & (df['budget'] > 0)]
+    return all_cleaned_movies, non_zero_revenue_cleaned_movies, non_zero_revenue_or_budget_cleaned_movies
+
+all_cleaned_movies, non_zero_revenue_cleaned_movies, non_zero_revenue_or_budget_cleaned_movies = create_datasets(combined_data)
+
+all_cleaned_movies.to_excel(os.path.join(base_path, '..', 'all_data_2000_2024.xlsx'), index=False)  
+non_zero_revenue_cleaned_movies.to_excel(os.path.join(base_path, '..', 'non_zero_revenue_2000_2024.xlsx'), index=False)  
+non_zero_revenue_or_budget_cleaned_movies.to_excel(os.path.join(base_path, '..', 'non_zero_revenue_or_budget_2000_2024.xlsx'), index=False) 
+
+print("Finished!")
