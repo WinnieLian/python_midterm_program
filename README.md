@@ -1,11 +1,6 @@
 # Python_Midterm_Project 
 
-Source(s) of dataset(s) must be clearly documented
+For this project, we collected movie data from The Movie Database (TMDb) API, focusing on films released in a specific year and country. The data collection involved two API endpoints: the Discover Movies endpoint, which was used to fetch movies based on release year and country of origin, and the Movie Details endpoint, which provided detailed information for each movie, including budget, revenue, runtime, genres, production countries, and companies.
 
-Our data comes from the Movie Database (TMDB).  We extracted information about US made movies.
+The collected data was stored in a CSV file using csv.DictWriter. Initially, the file was created with headers to establish a consistent structure. As more movie batches were processed, data was appended to avoid overwriting, ensuring efficient storage and management of large datasets. 
 
-Data collection methods must be understood and clearly documented. You should read and summarize the documentation of the data, make sure that you understand and document all columns/features that are relevant to your analysis. You should understand and summarize what isn’t in the data too.
-
-We used a personal API key to extract information about movie title, revenue, budget, vote_average, vote_count, genres, production
-
-![Alt text](C:\Users\Admin\Desktop\WhatsApp Image 2024-10-12 at 13.31.31_2a3f1367.jpg)
