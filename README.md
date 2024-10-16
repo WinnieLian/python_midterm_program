@@ -4,7 +4,6 @@ For this project, we collected movie data from The Movie Database (TMDb) API, fo
 
 The collected data was stored in a CSV file using csv.DictWriter. Initially, the file was created with headers to establish a consistent structure. As more movie batches were processed, data was appended to avoid overwriting, ensuring efficient storage and management of large datasets. 
 
-# Python_Midterm_Project 
 
 **Task 1:  Analysis of historical dynamics of US Movie market in 2000 - 2024**
 
