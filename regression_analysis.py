@@ -34,7 +34,6 @@ def regression_scatter_plot(dataframe, str):
     return plt.show()
 
 
-
 def regression_analysis(dataframe):
     new_df = additional_cleaning(dataframe)
     X = new_df.select_dtypes(include=[np.number]).drop(["id","revenue", "release_month", "release_year"], axis=1)
@@ -54,7 +53,7 @@ def regression_analysis(dataframe):
 
 def reg_OLS(dataframe):
     new_df = additional_cleaning(dataframe)
-    X = new_df.select_dtypes(include=[np.number]).drop(["id","revenue", "release_month", "release_year", "budget", "vote_average", "release_quarter"], axis=1)
+    X = new_df.select_dtypes(include=[np.number]).drop(["id","revenue", "release_month", "release_year", "budget", "release_quarter"], axis=1)
     X = sm.add_constant(X)
     y = new_df['revenue']
     model = sm.OLS(y, X)
