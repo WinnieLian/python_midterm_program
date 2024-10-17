@@ -122,8 +122,7 @@ The high production costs reflected in the graph suggest that film companies are
 As a result, the most profitable films, such as Avatar (2009) and Avengers: Endgame (2019), highlight the significant financial return that blockbuster films can generate relative to their production costs. Despite large budgets, these films achieve high profitability, indicating that the massive investments in production and marketing are justified by the substantial global box office receipts. Franchise films dominate the list, showing that audiences’ willingness to pay for familiar, high-quality content translates into strong returns on investment for studios.
 
 
-
-****4:  Linear regression of box-office revenue **
+**4:  Linear regression of box-office revenue**
 
 Correlation analysis-
 
@@ -141,7 +140,7 @@ The below shows output from simple linear regression of revenue on total_budget.
 
 ![Alt text](https://github.com/WinnieLian/python_midterm_program/blob/main/regression_analysis_graphs/Regression_OLS%20results.png?raw=true)
 
-**5. **
+**5.**
 
 ![Alt text](https://github.com/WinnieLian/python_midterm_program/blob/main/Images/roipergenre.jpg?raw=true)
 
