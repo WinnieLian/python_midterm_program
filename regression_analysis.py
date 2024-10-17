@@ -27,28 +27,11 @@ def correlation_heatmap(dataframe):
 
 
 def regression_scatter_plot(dataframe, str):
-    X = dataframe.select_dtypes(include=[np.number]).drop(["id","revenue"], axis=1)
+    X = dataframe.select_dtypes(include=[np.number]).drop(['id','revenue'], axis=1)
     y = dataframe['revenue']
 
     plt.scatter(X[str], y, color = "blue")
     return plt.show()
-
-
-def regression_analysis(dataframe):
-    new_df = additional_cleaning(dataframe)
-    X = new_df.select_dtypes(include=[np.number]).drop(["id","revenue", "release_month", "release_year"], axis=1)
-    y = np.log(new_df['revenue'])
-
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=50)
-    linear_model = LinearRegression()
-    linear_model.fit(X_train, y_train)
-    roi_prediction = linear_model.predict(X_test)
-
-    rmse = float(math.sqrt(np.mean( (y_test - roi_prediction)**2 )))
-    r2 = r2_score(y_test, roi_prediction)
-
-    return ["Root Mean squared error is {}".format(rmse), "R_squared is {}".format(r2)]
-
 
 
 def reg_OLS(dataframe):
