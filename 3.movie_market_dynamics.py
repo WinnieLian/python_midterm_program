@@ -55,7 +55,7 @@ def plot_revenue_per_year(revenue_per_year):
 
 # Main function to orchestrate the tasks
 def main():
-    file_path = "all_data_2000_2024.xlsx"
+    file_path = "data/all_data_2000_2024.xlsx"
     data = load_data(file_path)
 
     # Prepare and plot movies per year
