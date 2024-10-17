@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 
-file_path_non_zero_revenue = '/Users/xuchengyang/Downloads/non_zero_revenue_2000_2024-2.xlsx'
+file_path_non_zero_revenue = 'data/non_zero_revenue_2000_2024-2.xlsx'
 non_zero_revenue_data = pd.read_excel(file_path_non_zero_revenue)
 
 non_zero_revenue_data['release_date'] = pd.to_datetime(non_zero_revenue_data['release_date'], errors='coerce')

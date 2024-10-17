@@ -59,7 +59,7 @@ def plot_top_profitability(data):
     print("Plot saved as 'top_profitability_films.png'")
 
 def main():
-    file_path = "all_data_2000_2024.xlsx"
+    file_path = "data/all_data_2000_2024.xlsx"
     data = load_data(file_path)
     data = prepare_data(data)
 

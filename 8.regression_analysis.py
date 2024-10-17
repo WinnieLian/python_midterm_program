@@ -6,10 +6,7 @@ import statsmodels.api as sm
 from additional_cleaning import additional_cleaning
 
 non_zero_movies_df = pd.read_excel(
-    "C:/Users/Admin/Desktop/Python-Class/python_midterm_program/data/non_zero_revenue_or_budget_2000_2024.xlsx"
-)
-non_zero_bo_movies_df = pd.read_excel(
-    "C:/Users/Admin/Desktop/Python-Class/python_midterm_program/data/non_zero_revenue_2000_2024.xlsx"
+    "data/non_zero_revenue_or_budget_2000_2024.xlsx"
 )
 
 def correlation_heatmap(dataframe):
@@ -21,6 +18,7 @@ def correlation_heatmap(dataframe):
     plt.xticks(rotation=0, ha="center")
     return plt.show()
 
+correlation_heatmap(non_zero_movies_df)
 
 def regression_scatter_plot(dataframe, str):
     X = dataframe.select_dtypes(include=[np.number]).drop(['id','revenue'], axis=1)
