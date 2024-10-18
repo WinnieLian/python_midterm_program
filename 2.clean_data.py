@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-base_path = r'/mnt/d/python 项目/project1/raw_data'
+base_path = r'data/raw_data'
 
 # data_clean functions 
 def clean_data(df):
