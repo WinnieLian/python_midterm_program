@@ -7,7 +7,6 @@ non_zero_revenue_data = pd.read_excel(file_path_non_zero_revenue)
 non_zero_revenue_data['release_date'] = pd.to_datetime(non_zero_revenue_data['release_date'], errors='coerce')
 non_zero_revenue_data['release_year'] = non_zero_revenue_data['release_date'].dt.year
 
-# Grouping the data and summing up the revenue per genre per year
 genre_year_revenue = non_zero_revenue_data.groupby(['genres', 'release_year'])['revenue'].sum().reset_index()
 
 # Pivoting the data
