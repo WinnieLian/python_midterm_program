@@ -151,25 +151,29 @@ We first conducted simple correlation between some key variables. The highest co
 ![Alt text](https://github.com/WinnieLian/python_midterm_program/blob/main/regression_analysis_graphs/correlation_map.png?raw=true)
 
 OLS Results 
-$$
-\text {Total Budget} = 1.5*Budget
-$$
-The below shows output from simple linear regression of revenue on Total Budget. I found information online that marketing and distribution costs about 50% of production budget. A big caveat here is that this is still not reflective of actual movie budgeting although it is of course, slightly more realistic than just look at production budget. A quick research suggests that a rule of thumb is to consider 2.5-3x a movie's production budget to account for all its costs. However, I only found people talking about this in online forums and there was no actual source from an expert.
+
+We computed Total Budget = 1.5*Budget
+
+We found information online that marketing and distribution costs about 50% of production budget. A big caveat here is that this is still not reflective of actual movie budgeting although it is of course, slightly more realistic than just look at production budget. A quick research suggests that a rule of thumb is to consider 2.5-3x a movie's production budget to account for all its costs. However, I only found people talking about this in online forums and there was no actual source from an expert.
 
 For the 50% marketing budget, I found information from Gruvi. There is at least some credibility for this 1.5x rule as Gruvi is a data-driven film marketing agency.
 
 https://gruvi.tv/post/movie-marketing-budget/#:~:text=The%20average%20movie%20marketing%20budget,them%20is%20no%20picnic%2C%20either.
 
-We initially looked tried to fit OLS by including runtime in the regression which gave a coefficient of -471,700, which seems like an unlikely effect for increasing just one minute runtime. Its possible that what we actually see is runtime affecting revenue through vote average. It could also be the case that a linear model is just not a good fit for these variables we are trying to study. We also do not use any causal inference methods to isolate causal effects, but that could be a good avenue for future study.
+The below shows output from simple linear regression of revenue on Total Budget. We initially looked tried to fit OLS by including runtime in the regression which gave a coefficient of -471,700, which seems like an unlikely effect for increasing just one minute runtime. Its possible that what we actually see is runtime affecting revenue through vote average. It could also be the case that a linear model is just not a good fit for these variables we are trying to study. We also do not use any causal inference methods to isolate causal effects, but that could be a good avenue for future study.
 
 ![Alt text](https://github.com/WinnieLian/python_midterm_program/blob/main/regression_analysis_graphs/Regression_OLS%20results.png?raw=true)
 
 **7: ROI analysis per genre and quarter**
 
 Per genre analysis
-$$
-\text{Return on Investment} = \left( \frac{\text{Revenue} - \text{Total Budget}}{\text{Total Budget}} \right) \times 100
-$$
+
+We computed Return on Investment by :
+
+100*(Revenue - Total Budget)/Total Budget. 
+
+Essentially this is just the return per dollar spent on a film.
+
 The first diagram below shows average return on investment per film genre. Horror seems to have the highest average return (of more than 200%). This is possibly due to horror being cheaper to produce than other genres and still having lots of IP focused movies (like the Conjuring Franchise), which generally brings higher returns than non IP films. 
 
 ![Alt text](https://github.com/WinnieLian/python_midterm_program/blob/main/Images/roipergenre.jpg?raw=true)
@@ -202,14 +206,8 @@ The four horizontal bar graphs below show return on investment, average vote cou
 
 **8: Profitability Analysis**
 
-We computed an indicator variable for Profitability as follows.
-$$
-Profitability =
-\begin{cases}
-1 & \text{if } Revenue \geq Total Budget \\
-0 & \text{if } Revenue < TotalBudget
-\end{cases}
-$$
+We computed an indicator variable for Profitability as follows. We created a new variable called 'Profitability' and assigned it a value of 1 if Revenue exceeded or was equal to Total Budget, and assigned it a value of 0 if Revenue was less than Total Budget.
+
 We then fit a probit model using Profitability as the dependent variable in the regression. We got some scatter plots for vote average, runtime and vote count as explanatory variables. If we look at the two plots below for vote average and runtime, it seems like these two variables do not explain much of the variation in whether a film is profitable or not. For vote average, we see a huge variation in profitability from a score of 5 to about 8. Most movies have a runtime between 90 and 150, and again we see a huge variation in profitability for films within this range. Therefore, there are many other factors to look to when analysing profitability.
 
 One such factor is vote count, which does seem to explain most of the variation of film profitability. If we consider vote count as a proxy for audience engagement or popularity, it is perhaps not too surprising that more popular films are more likely to be profitable. The profitability measure also includes the break-even point, so of course if the goal is to chase higher profits then there are other factors that a film studio should look to. For example in our ROI analysis that we did above, one conclusion the we can draw is that studios could look to investing in horror films and releasing them in the second quarter to gain higher profits. 
