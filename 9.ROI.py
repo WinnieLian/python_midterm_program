@@ -6,9 +6,6 @@ from additional_cleaning import additional_cleaning
 non_zero_movies_df = pd.read_excel(
     "data/non_zero_revenue_or_budget_2000_2024.xlsx"
 )
-non_zero_bo_movies_df = pd.read_excel(
-    "data/non_zero_revenue_2000_2024.xlsx"
-)
 
 def retreive_avg_roi(dataframe):
     """Calculates average ROI group by genre and returns subset of data"""
@@ -33,6 +30,7 @@ def return_on_investment_per_genre(dataframe):
 
 
 def return_on_investment_per_release_quarter(dataframe):
+    "Generates a horizontal bar graph of average ROI per release quarter"
     new_df = additional_cleaning(dataframe)
     average_values = new_df.groupby('release_quarter').agg(
         avg_revenue=('revenue', 'mean'),
@@ -47,10 +45,8 @@ def return_on_investment_per_release_quarter(dataframe):
     return plt.show()
 
 
-
-
 def avg_vote_count_by_genre(dataframe):
-    """Generates a horizontal bar graph of vote count per genre"""
+    """Generates a horizontal bar graph of average vote count per genre"""
     average_vote_count = dataframe.groupby('genres')['vote_count'].mean()
     average_vote_count_df = average_vote_count.reset_index()
     average_vote_count_df.columns = ['genres', 'average_vote_count']
@@ -60,6 +56,7 @@ def avg_vote_count_by_genre(dataframe):
     return plt.show()
 
 def avg_vote_count_by_release_quarter(dataframe):
+    """Generates a horizontal bar graph of average vote count per release quarter"""
     new_df= additional_cleaning(dataframe)
     average_vote_count = new_df.groupby('release_quarter')['vote_count'].mean()
     average_vote_count_df = average_vote_count.reset_index()
@@ -70,17 +67,8 @@ def avg_vote_count_by_release_quarter(dataframe):
     return plt.show()
 
 
-def count_per_genre(dataframe):
-    """Generates a horizontal bar graph of number of films per genre"""
-    count = dataframe.groupby('genres').size()
-    count_df = count.reset_index()
-    count_df.columns = ['genres', 'total_count']
-
-    plt.barh(count_df['genres'], count_df['total_count'])
-    plt.xlabel('Number of Movies')
-    return plt.show()
-
 def count_per_release_quarter(dataframe):
+    """Generates a horizontal bar graph of total count of movies per release quarter"""
     new_df= additional_cleaning(dataframe)
     count = new_df.groupby('release_quarter').size()
     count_df = count.reset_index()
@@ -92,6 +80,7 @@ def count_per_release_quarter(dataframe):
 
 
 def avg_budget_per_genre(dataframe):
+    """Generates a horizontal bar graph of average total budget per genre"""
     new_df = additional_cleaning(dataframe)
     average_budget = new_df.groupby('genres')['total_budget'].mean()
     average_budget_df = average_budget.reset_index()
@@ -102,6 +91,7 @@ def avg_budget_per_genre(dataframe):
     return plt.show()
 
 def avg_budget_per_release_quarter(dataframe):
+    """Generates a horizontal bar graph of average total budget per release quarter"""
     new_df = additional_cleaning(dataframe)
     average_budget = new_df.groupby('release_quarter')['total_budget'].mean()
     average_budget_df = average_budget.reset_index()
@@ -117,7 +107,6 @@ return_on_investment_per_genre(non_zero_movies_df)
 return_on_investment_per_release_quarter(non_zero_movies_df)
 avg_vote_count_by_genre(non_zero_movies_df)
 avg_vote_count_by_release_quarter(non_zero_movies_df)
-count_per_genre(non_zero_movies_df)
 count_per_release_quarter(non_zero_movies_df)
 avg_budget_per_genre(non_zero_movies_df)
 avg_budget_per_release_quarter(non_zero_movies_df)
