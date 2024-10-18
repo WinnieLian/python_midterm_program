@@ -20,15 +20,8 @@ def correlation_heatmap(dataframe):
 
 correlation_heatmap(non_zero_movies_df)
 
-def regression_scatter_plot(dataframe, str):
-    X = dataframe.select_dtypes(include=[np.number]).drop(['id','revenue'], axis=1)
-    y = dataframe['revenue']
-
-    plt.scatter(X[str], y, color = "blue")
-    return plt.show()
-
-
 def reg_OLS(dataframe):
+    """Generates output for ordinarly least square regression with revenue as the dependent variable"""
     new_df = additional_cleaning(dataframe)
     X = new_df.select_dtypes(include=[np.number]).drop(["id","revenue", "release_month", "release_year", "budget", "release_quarter"], axis=1)
     X = sm.add_constant(X)
@@ -39,15 +32,8 @@ def reg_OLS(dataframe):
 
     new_df['predicted_y'] = predicted_y
     plt.figure(figsize=(10, 6))
-    
-    sns.regplot(x=new_df['runtime'], 
-                y=new_df['predicted_y'], 
-                logistic=False,
-                scatter = True,
-                color='blue')
 
     return OLS_model.summary()
-
 
 
 print(reg_OLS(non_zero_movies_df))
