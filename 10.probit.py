@@ -6,16 +6,12 @@ import seaborn as sns
 import statsmodels.api as sm
 from additional_cleaning import additional_cleaning
 
-
 non_zero_movies_df = pd.read_excel(
     "data/non_zero_revenue_or_budget_2000_2024.xlsx"
 )
-non_zero_bo_movies_df = pd.read_excel(
-    "data/non_zero_revenue_2000_2024.xlsx"
-)
-
 
 def get_probit_model(dataframe, str): 
+    """This function returns a probit scatter plot with probability of profit on the y-axis and input variable str on the x-axis"""
     new_df = additional_cleaning(dataframe)
     profit = []
     for i in range(len(new_df['revenue'])):
@@ -42,8 +38,12 @@ def get_probit_model(dataframe, str):
                 logistic=True,
                 scatter = True,
                 color='blue')
+    
     plt.ylabel("Probability of Profit")
+    
     return plt.show()
+
+
 
 get_probit_model(non_zero_movies_df, 'vote_average')
 get_probit_model(non_zero_movies_df, 'vote_count')
