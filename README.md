@@ -46,7 +46,7 @@ Before starting doing the project it's crucial to install the necessary packages
 
 
 
-<u>**Instructions to reproduce:**</u>
+**Instructions to reproduce:**
 
 **Data Scraping:**
 # Python_Midterm_Project 
@@ -97,25 +97,22 @@ Before starting doing the project it's crucial to install the necessary packages
 
 
 
-<u>**Instructions to reproduce:**</u>
+**Instructions to reproduce:**
 
 **Data Scraping:**
 
 In this project, we gathered extensive movie data using The Movie Database (TMDb) API'https://www.themoviedb.org/?language=en-US', focusing on films released between 2000 and 2024 from various countries. By utilizing two key API endpoints—the Discover Movies and Movie Details endpoints—we were able to capture a comprehensive dataset on films from specific years and countries, including Budget (in dollars), Revenue (in dollars), Runtime (in minutes), Genres ( a list of genres for the movie), Production countries (a list of countries where the movie was produced), and Production companies (a list of companies involved in the movie's production)
 
 *Basic Movie Information*
-*Basic Movie Information*
 Initially, we used the Discover Movies endpoint to filter movies based on their release year and country of origin and employed random sampling to capture a diverse set of movies. This approach allowed us to efficiently gather data while avoiding potential biases associated with focusing solely on the most popular films. 
 
 *Detailed Movie Information*
-*Detailed Movie Information*
 After identifying movies via the Discover endpoint, we retrieved additional data using the Movie Details endpoint. For each movie, we collected detailed information such as budget (in dollars), revenue (in dollars), runtime (in minutes), genres (a list of associated genres), production countries (the countries involved in production), and production companies (the companies involved in the film's creation). This allowed us to build a richer dataset for deeper analysis.
 
-*Data Storage:*
-*Data Storage:*
+*Data Storage*
 The collected movie data was stored in CSV files for easy access and future analysis. Using csv.DictWriter, we initially created the file with headers to maintain a consistent structure across the dataset. As we processed batches of movies, we appended the data to the CSV file in order to avoid overwriting previous entries. This method ensured efficient storage and management of large datasets, particularly when dealing with multiple years' worth of data.
 
-Changing the release year parameter
+*Changing the release year parameter*
 To cover the full scope of our project, we retrieved movie data from the TMDb API for 24 years, spanning from 2000 to 2024. By changing the release year parameter in the API calls, we were able to systematically collect data for each year. This comprehensive dataset reflects two decades of film industry trends, including financial data such as budget and revenue, as well as insights into production practices across different countries and companies.
 
 
@@ -125,13 +122,11 @@ We normalized the raw data, corrected the date format, the display of the movie 
 
 
 
-<u>**Findings:**</u>
+**Findings:**
 
 **1:  Analysis of historical dynamics of US Movie market in 2000 - 2024**
 
 In the first stage of our analysis, it was crucial to look at overall dynamics of number of films of the 25 years. For that we calculated number of films per each year of study, and the results can be seen below. It can be seen that the movie market has experienced steady growth over the whole period of study, with number of short-term decreases: a decrease in 2010, consequence of mortgage crisis of 2008-09 years and a slight decrease in 2020, caused by the problems with film production in COVID-19 pandemic. Additionally, it is necessary to mention that 2024 YTD data suggests a decrease in releases so far, but it’s too early to draw firm conclusions about the year’s overall trend.
-
-
 
 ![Alt text](https://github.com/WinnieLian/python_midterm_program/blob/Images-for-README/Images/movies_per_year.png?raw=true)
 
@@ -139,15 +134,11 @@ Then, we analyzed the total box office revenue of US, treating it as a proxy for
 
 Thus, in 2023 year the overall US movie market market was equal to around $12 bln. To dig deeper, we can clearly see a steady growth in box office revenue from 2000 to 2019 years coupled with a number of negligible decreases. However, the pandemic-induced disruption in 2020 caused the most significant revenue decline in modern history. The partial recovery from 2021 to 2023 suggests the industry is slowly regaining strength, though full recovery to pre-pandemic levels is still uncertain. 2024 YTD revenue indicates a slow start, but final figures may change depending on blockbuster releases later in the year.  
 
-
-
 ![Alt text](https://github.com/WinnieLian/python_midterm_program/blob/Images-for-README/Images/box_office_revenue.png?raw=true)
 
 
 
 **2:  Analysis of top-25 US movie producers in 2000 - 2024**
-
-
 
 ![Alt text](https://github.com/WinnieLian/python_midterm_program/blob/main/Images/Top%2025%20Companies%20Average%20Revenue%20Share.jpg?raw=true)
 
@@ -191,8 +182,9 @@ $$
 The below shows output from simple linear regression of revenue on total_budget. I found information online that marketing and distribution costs about 50% of production budget. 
 
 
-
 ![Alt text](https://github.com/WinnieLian/python_midterm_program/blob/main/regression_analysis_graphs/Regression_OLS%20results.png?raw=true)
+
+
 
 **5.**
 
@@ -206,13 +198,13 @@ The below shows output from simple linear regression of revenue on total_budget.
 
 ![Alt text](https://github.com/WinnieLian/python_midterm_program/blob/main/Images/avgbudgetpergenre.jpg?raw=true)
 
-
-
 ![Alt text](https://github.com/WinnieLian/python_midterm_program/blob/main/Images/totalbudgetperquarter.jpg?raw=true)
 
 ![Alt text](https://github.com/WinnieLian/python_midterm_program/blob/main/Images/numbermoviespergenre.jpg?raw=true)
 
 ![Alt text](https://github.com/WinnieLian/python_midterm_program/blob/main/Images/numbermoviesquarter.jpg?raw=true)
+
+
 
 **6: Profitability Analysis**
 
@@ -231,10 +223,10 @@ The below shows output from simple linear regression of revenue on total_budget.
 We processed and used our cleaned database to analyze the revenue trends by genre. We first extracted the release year, and then grouped and summarized the revenue of each genre each year by genre and year. Then, we pivoted the data into a table, with each column representing a genre and each row corresponding to a year, and finally drew a line chart of the total annual revenue trends of each genre. The line chart shows the trend of revenue by genre over time. It is worth noting that the action and adventure genres have the highest revenue, especially the action genre, which reached its peak in 2020, exceeding US$8 billion.
 
 
-
 ![Alt text](https://github.com/WinnieLian/python_midterm_program/blob/main/Images/Box%20Office%20Revenue%20Share%20by%20Genre.jpg?raw=true)
 
 We then analyzed the share of box office revenue by genre from 2000 to 2024. We first calculated the total revenue for each year and determined the annual market share for each genre. We selected the 10 genres with the highest total revenue and combined all other genres into the "Other" category to simplify the analysis. Finally, the data was plotted as a stacked bar chart to show the annual revenue share of each genre over time. This chart shows the contribution of different types of movies to the total box office revenue each year. Obviously, the action, adventure, and animation genres have always had a large market share over time.
+
 
 
 **8:  Genre Revenue Share in 2000, 2012, 2020 and 2024**
@@ -243,13 +235,12 @@ For the sixth part, first, we extract the release year of each movie. Then we gr
 
 ![Alt text](https://github.com/WinnieLian/python_midterm_program/blob/main/Images/Genre%202000.png?raw=true)
 
-
-
 ![Alt text](https://github.com/WinnieLian/python_midterm_program/blob/main/Images/Genre%202012.png?raw=true)
 
 ![Alt text](https://github.com/WinnieLian/python_midterm_program/blob/main/Images/Genre%202020.png?raw=true)
 
 ![Alt text](https://github.com/WinnieLian/python_midterm_program/blob/main/Images/Genre%202024.png?raw=true)
+
 
 **Conclusion**
 
@@ -268,7 +259,7 @@ Through a multi-angle analysis of the US film market, this project shows the dev
 
 **A discussion of extensions of data**
 
-1. Introduce machine learning models for box office prediction. In the future, linear regression, random forest, support vector machine, etc. can be used to predict the box office performance of movies. By training models, we can predict the box office revenue of new movies.
-2. Global film market analysis. The current analysis focuses on the US market, but in the future it can be expanded to the global market to study audience preferences and market dynamics in different countries and regions.
-3. In-depth analysis of the relationship between film costs and returns. Analyze the difference in profitability between high-budget and low-budget films through historical data, analyze which types of films have the greatest returns at different budget levels, etc.
+1. We can consider introducing machine learning models for box office prediction. In the future, we can use methods such as linear regression, random forest, support vector machine, etc. to predict the box office performance of movies. These models can help us predict the box office revenue of new movies.
+2. We can combine more data based on the current database to analyze the global film market, because our current analysis is mainly focused on the US market, but it can also be expanded to the global market to study audience preferences and market dynamics in different countries and regions.
+3. We can deeply analyze the relationship between film costs and revenues, analyze the profit differences between high-budget and low-budget films through historical data, and analyze which types of films have the greatest revenue at different budget levels.
 
