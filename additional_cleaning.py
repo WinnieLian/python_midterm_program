@@ -3,9 +3,9 @@ import pandas as pd
 def additional_cleaning(dataframe):
     """Function that creates a total_budget variable and extracts release quarter from release date"""
     dataframe['total_budget'] = 1.5*dataframe['budget']
-    dataframe["release_date"] = pd.to_datetime(dataframe["release_date"])
+    dataframe['release_date'] = pd.to_datetime(dataframe['release_date'])
 
-    dataframe["release_year"] = dataframe["release_date"].dt.year
+    dataframe['release_year'] = dataframe['release_date'].dt.year
     dataframe['release_month'] = dataframe['release_date'].dt.month
     release_quarter = []
 
