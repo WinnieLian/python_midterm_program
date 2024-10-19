@@ -160,7 +160,7 @@ For the 50% marketing budget, I found information from Gruvi. There is at least 
 
 https://gruvi.tv/post/movie-marketing-budget/#:~:text=The%20average%20movie%20marketing%20budget,them%20is%20no%20picnic%2C%20either.
 
-The below shows output from simple linear regression of revenue on Total Budget. We initially looked tried to fit OLS by including runtime in the regression which gave a coefficient of -471,700, which seems like an unlikely effect for increasing just one minute runtime. Its possible that what we actually see is runtime affecting revenue through vote average. It could also be the case that a linear model is just not a good fit for these variables we are trying to study. We also do not use any causal inference methods to isolate causal effects, but that could be a good avenue for future study.
+The below picture shows output from a simple linear regression of revenue on vote average, vote count, runtime and total budget. This model predicts that one additional minute of a film's runtime seems to decrease box office revenue by an average of $471,700, which seems like an unlikely effect. Its possible that what we actually see is runtime affecting revenue through vote average. It could also be the case that a linear model is just not a good fit for these variables we are trying to study. We also do not use any causal inference methods to isolate causal effects, but that could be a good avenue for future study.
 
 ![Alt text](https://github.com/WinnieLian/python_midterm_program/blob/main/regression_analysis_graphs/Regression_OLS%20results.png?raw=true)
 
