@@ -1,11 +1,11 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Load the Excel file
 def load_data(file_path):
     return pd.read_excel(file_path)
 
 def prepare_data(data):
+    '''Prepare data for movies'''
     data['release_date'] = pd.to_datetime(data['release_date'], errors='coerce')
     data['release_year'] = data['release_date'].dt.year
     data['budget'] = pd.to_numeric(data['budget'], errors='coerce').fillna(0)
@@ -13,8 +13,8 @@ def prepare_data(data):
     data['profitability'] = data['revenue'] - 1.5 * data['budget']
     return data
 
-# Plot 1: Top 15 Most Expensive Film Productions by Budget
 def plot_top_budget(data):
+    '''Plot 1: Top 15 Most Expensive Film Productions by Budget'''
     top_budget = data.nlargest(15, 'budget')
     plt.figure(figsize=(12, 8))
     plt.barh(top_budget['title'] + ' (' + top_budget['release_year'].astype(str) + ')',
@@ -28,8 +28,8 @@ def plot_top_budget(data):
     plt.savefig("top_budget_films.png", dpi=300, bbox_inches='tight')
     print("Plot saved as 'top_budget_films.png'")
 
-# Plot 2: Top 15 Films by Box Office Revenue
 def plot_top_revenue(data):
+    '''Plot 2: Top 15 Films by Box Office Revenue'''
     top_revenue = data.nlargest(15, 'revenue')
     plt.figure(figsize=(12, 8))
     plt.barh(top_revenue['title'] + ' (' + top_revenue['release_year'].astype(str) + ')',
@@ -43,8 +43,8 @@ def plot_top_revenue(data):
     plt.savefig("top_revenue_films.png", dpi=300, bbox_inches='tight')
     print("Plot saved as 'top_revenue_films.png'")
 
-# Plot 3: Top 15 Most Profitable Films
 def plot_top_profitability(data):
+    '''Plot 3: Top 15 Most Profitable Films'''
     top_profitability = data.nlargest(15, 'profitability')
     plt.figure(figsize=(12, 8))
     plt.barh(top_profitability['title'] + ' (' + top_profitability['release_year'].astype(str) + ')',
@@ -59,16 +59,15 @@ def plot_top_profitability(data):
     print("Plot saved as 'top_profitability_films.png'")
 
 def main():
+    '''Plots 3 charts'''
     file_path = "data/all_data_2000_2024.xlsx"
     data = load_data(file_path)
     data = prepare_data(data)
 
-    # Plot the three charts
     plot_top_budget(data)
     plot_top_revenue(data)
     plot_top_profitability(data)
 
-# Execute the main function
 if __name__ == "__main__":
     main()
 
